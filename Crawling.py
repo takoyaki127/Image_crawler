@@ -36,18 +36,23 @@ def download_image(url, file_path):
             f.write(r.content)
 
 
-file = read_file()
-browser = Chrome()
-page_url = input('URL->')
+def main():
+    file = read_file()
+    browser = Chrome()
+    page_url = input('URL->')
 
-img_urls = browser.search_img(page_url, size_lower_limit=False)
-if img_urls:
-    current_time = now()
-    folder_name = f'{file}/{current_time}'
-    create_directly(folder_name)
+    img_urls = browser.search_img(page_url, size_lower_limit=False)
+    if img_urls:
+        current_time = now()
+        folder_name = f'{file}/{current_time}'
+        create_directly(folder_name)
 
-    for i, img_url in tenumerate(img_urls):
-        download_image(img_url, f'{folder_name}/{i}.png')
-        time.sleep(1)
+        for i, img_url in tenumerate(img_urls):
+            download_image(img_url, f'{folder_name}/{i}.png')
+            time.sleep(0.5)
 
-browser.close()
+    browser.close()
+
+
+if __name__ == "__main__":
+    main()
