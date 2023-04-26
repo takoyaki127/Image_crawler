@@ -12,7 +12,7 @@ class Chrome():
     def __init__(self):
         self.driver = webdriver.Chrome(
             '/chromedriver.exe', options=Chrome.options)
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(30)
 
     def close(self):
         self.driver.close()
